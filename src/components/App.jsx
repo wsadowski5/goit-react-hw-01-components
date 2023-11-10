@@ -1,44 +1,36 @@
-// export const App = () => {
-//   return (
-//     <div
-//       style={{
-//         height: '100vh',
-//         display: 'flex',
-//         justifyContent: 'center',
-//         alignItems: 'center',
-//         fontSize: 40,
-//         color: '#010101'
-//       }}
-//     >
-//       React homework template 
-//     </div>
-//   );
-// };
+import { Profile } from './Profile/Profile';
+import user from '../components/Profile/user.json';
 
+import { Statistics } from './Statistics/Statistics';
+import data from '../components/Statistics/data.json';
 
+import { Friendlist } from './Friends/FriendsList.jsx';
+import friends from '../components/Friends/friends.json';
 
-// const Link = () => <a href="https://media.istockphoto.com/id/1461568911/pl/zdj%C4%99cie/popo%C5%82udniowe-li%C5%9Bcie-jaworu.jpg?s=1024x1024&w=is&k=20&c=vTRBOAGixyUhQdhmKIV2B4W1wsDUr9jqYJm_nX20tvg="> TESTTTTTTTTT</a>
-
-
-
-// const Product = ({imgUrl, name, price}) => (
-// <div>
-//     <img src={imgUrl} alt={name} width="640" />
-//     <h2>{name}</h2>
-//     <p>Price: {price} dolczegabanów</p>
-//     <button type="button">Add to cart</button>
-//   </div>
-// )
-
-import { Profile, userData } from "./Profile/Profile";
-
+import { TransactionHistory } from './Transactions/TransactionHistory';
+import transactions from '../components/Transactions/transactions.json'
 
 export const App = () => {
   return (
     <>
-      <Profile username = {userData.username} avatar = {userData.avatar} tag = {userData.tag} location ={userData.location} followers={userData.stats.followers} views={userData.stats.views} likes={userData.stats.likes}/>
-  </>
+      <Profile
+        username={user.username}
+        avatar={user.avatar}
+        tag={user.tag}
+        location={user.location}
+        stats={user.stats}
+      />
+
+      <Statistics title="Upload stats" stats={data} />
+      <Statistics stats={data} />
+
+      <Friendlist friends={friends} />
+
+      <TransactionHistory items={transactions} />
+    </>
   );
 };
 
-
+// {/* <Friendlist friends={friends}>
+// <FriendListItem friends = {friends} />
+// </Friendlist> */}
