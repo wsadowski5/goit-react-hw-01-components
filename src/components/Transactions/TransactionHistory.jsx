@@ -1,18 +1,19 @@
+import PropTypes from "prop-types";
 import { TransactionHistoryItem } from './TransactionHistoryItem';
 
-export const TransactionHistory = items => {
+export const TransactionHistory = ({items}) => {
   return (
-    // <table className='transaction-history'>
-    //   <thead>
-    //     <tr>
-    //       <th>Type</th>
-    //       <th>Amount</th>
-    //       <th>Currency</th>
-    //     </tr>
-    //   </thead>
-    //   <tbody>
+    <table className='transaction-history'>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Amount</th>
+          <th>Currency</th>
+        </tr>
+      </thead>
+      <tbody>
        
-      {transaction.map(item => (
+      {items.map(item => (
         <TransactionHistoryItem
         key={item.id}
         type={item.type}
@@ -21,20 +22,18 @@ export const TransactionHistory = items => {
         />
       ))}
 
-
-    //   </tbody>
-    // </table>
+       </tbody>
+     </table>
   );
 };
 
-
-
-
-// {items.map(item => (
-//     <TransactionHistoryItem
-//       key={item.id}
-//       type={item.type}
-//       amount={item.amount}
-//       currency={item.currency}
-//     />
-//   ))}
+TransactionHistory.propTypes = {
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      type: PropTypes.string.isRequired,
+      amount: PropTypes.string.isRequired,
+      currency: PropTypes.string.isRequired,
+    })
+  ),
+};
