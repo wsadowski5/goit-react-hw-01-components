@@ -12,7 +12,7 @@ import transactions from '../components/Transactions/transactions.json'
 
 export const App = () => {
   return (
-    <>
+    <div className="container">
       <Profile
         username={user.username}
         avatar={user.avatar}
@@ -27,10 +27,8 @@ export const App = () => {
       <Friendlist friends={friends} />
 
       <TransactionHistory items={transactions} />
-    </>
+    </div>
   );
 };
 
-// {/* <Friendlist friends={friends}>
-// <FriendListItem friends = {friends} />
-// </Friendlist> */}
+
